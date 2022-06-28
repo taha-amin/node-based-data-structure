@@ -19,7 +19,18 @@ class LinkedList {
       current.next = new Node(val);
     }
   }
-  removeTail() {}
+  removeTail() {
+    let current = this.head;
+    while (current.next) {
+      let next = current.next;
+      if (next.next) {
+        current = current.next;
+      } else {
+        current.next = null;
+      }
+    }
+
+  }
 
   getList() {
     const listArr = [];
@@ -38,6 +49,10 @@ console.log(list.head);
 list.add("B");
 console.log(list.getList());
 list.add("C");
+console.log(list.getList());
+list.removeTail();
+console.log(list.getList());
+list.removeTail();
 console.log(list.getList());
 
 module.exports = { LinkedList };
